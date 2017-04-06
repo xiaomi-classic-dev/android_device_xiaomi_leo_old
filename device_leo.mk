@@ -254,6 +254,10 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libstagefright_soft_flacdec
 
+PRODUCT_PACKAGES += \
+    qcmediaplayer \
+    libqcmediaplayer
+
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
