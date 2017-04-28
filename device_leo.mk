@@ -271,10 +271,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtinyxml2 \
     libxml2
-
-#workaround
-PRODUCT_PACKAGES += \
-    libboringssl-compat
     
 #stlport
 PRODUCT_PACKAGES += \
@@ -282,8 +278,7 @@ PRODUCT_PACKAGES += \
 
 # CameraWrapper
 PRODUCT_PACKAGES += \
-    camera.msm8994 \
-    libcamera_shim
+    camera.msm8994
 
 # Multi HAL configuration file
 PRODUCT_COPY_FILES += \
