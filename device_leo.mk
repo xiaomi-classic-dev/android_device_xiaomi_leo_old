@@ -289,6 +289,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/xiaomi/leo/configs/hals.conf:system/etc/sensors/hals.conf
 
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.msm8994
+
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
