@@ -31,35 +31,30 @@ on early-init
     mkdir /firmware 0771 system system
     mkdir /bt_firmware 0771 system system
     symlink /data/tombstones /tombstones
-    chown system root  /sys/module/msm_thermal/core_control/cpus_offlined
-    chmod 666 /sys/module/msm_thermal/core_control/cpus_offlined
-
-on init
-    # Immersion
-    export VIBE_PIPE_PATH /dev/pipes
-    mkdir /dev/pipes 0771 system system
-
 
 on early-boot
-    # start select_sns_hal
-    chown -h system:system /persist/PSensorThFar.txt
-    chmod -h 600 /persist/PSensorThFar.txt
-    chown -h system:system /persist/PRSensorData.txt
-    chmod -h 600 /persist/PRSensorData.txt
-    /system/bin/log -p e -t "SensorSelect" "Use sensors.leo"
-    setprop ro.hardware.sensors leo
-
-    mkdir /data/usf 0700 system system
-    mkdir /data/misc/dts 0770 media audio
-
-on post-fs
-    export LD_SHIM_LIBS "/system/lib/libcrypto.so|libboringssl-compat.so:/system/lib/libmmcamera_interface.so|libcamera_shim.so:/system/vendor/lib/libmmcamera2_sensor_modules.so|libcamera_shim.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libcamera_shim.so"
+    start select_sns_hal
 
 on fs
-    mount_all ./fstab.qcom
+#    wait /dev/block/bootdevice
+    mount_all fstab.qcom
+    swapon_all fstab.qcom
+   # write /proc/sys/vm/swappiness 100
+
+    wait /dev/block/bootdevice/by-name/cache
+    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
+
+    wait /dev/block/bootdevice/by-name/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
     restorecon_recursive /persist
     mkdir /persist/data 0700 system system
-    mkdir /persist/audio 0771 media audio
+    mkdir /persist/wlan_bt 0700 system system
+
+    wait /dev/block/bootdevice/by-name/modem
+    mount vfat /dev/block/bootdevice/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0
+
+    wait /dev/block/bootdevice/by-name/bluetooth
+    mount vfat /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
@@ -69,19 +64,30 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /persist/data/sfs 0700 system system
     mkdir /persist/data/tz 0700 system system
-    chown system system /dev/sysmatdrv
-    chmod 0660 /dev/sysmatdrv
-    mkdir /persist/property 0700 root root
+    mkdir /data/usf 0700 system system
+    mkdir /data/misc/dts 0770 media audio
+    mkdir /data/thermal 0771 system system
 
 on boot
+    symlink /dev/block/platform/soc.0 /dev/block/bootdevice
     start rmt_storage
     start rfs_access
-    start xiaomi_hwaddrs
+    write /sys/bus/i2c/devices/2-004a/update_fw 1
+    write /sys/bus/i2c/devices/2-004a/update_cfg 1
     write /sys/bus/i2c/devices/2-0020/input/input0/update_fw 1
+# access permission for secure touch
+    chmod 0660 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch_enable
+    chmod 0440 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch
+    chmod 0660 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch_enable
+    chmod 0440 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch
+    chown system drmrpc /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch_enable
+    chown system drmrpc /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch
+    chown system drmrpc /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch_enable
+    chown system drmrpc /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch
     write /proc/sys/kernel/sched_boost 1
     write /proc/sys/vm/dirty_ratio 5
     write /proc/sys/vm/dirty_background_ratio 1
-    
+
     write /dev/cpuset/foreground/cpus 0-2,4-7
     write /dev/cpuset/foreground/boost/cpus 4-7
     write /dev/cpuset/background/cpus 0
@@ -94,10 +100,6 @@ on boot
     chown system system /dev/cpuset/top-app/boost/tasks
 
     chmod 0664 /dev/cpuset/top-app/boost/tasks
-    
-
-    chown system system /sys/class/leds/button-backlight/max_brightness
-    chown system system /sys/class/leds/button-backlight1/max_brightness
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
@@ -128,17 +130,23 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 #on property:sys.boot_completed=1
 #    start qrngp
 #
-#service select_sns_hal /system/bin/sensor_select.sh
-#    class main
-#    user root
-#    group root
-#    oneshot
 
 service qseecomd /system/bin/qseecomd
    class core
    user root
    group root
    writepid /dev/cpuset/system-background/tasks
+
+service perfd /system/vendor/bin/perfd
+   class main
+   user root
+   disabled
+
+service select_sns_hal /system/bin/sh /system/bin/sensor_select.sh
+    class main
+    user root
+    group root
+    oneshot
 
 #service mpdecision /system/bin/mpdecision --avg_comp
 #   user root
@@ -167,7 +175,7 @@ on property:sys.shutdown.requested=*
 #   group system
 #   disabled
 #
-service thermal-engine /system/vendor/bin/thermal-engine
+service thermal-engine /system/vendor/bin/thermal-engine -T
    class main
    user root
    socket thermal-send-client stream 0666 system system
@@ -179,12 +187,10 @@ service thermal-engine /system/vendor/bin/thermal-engine
 service security-check1 /sbin/security_boot_check system
     class core
     oneshot
-    disabled
 
 service security-check2 /sbin/security_boot_check recovery
     class core
     oneshot
-    disabled
 
 service time_daemon /system/bin/time_daemon
    class late_start
@@ -235,16 +241,6 @@ service usf_hovering /system/bin/usf_hovering
 
 service usf_proximity /system/bin/usf_proximity
     user system
-    group system inet audio
-    disabled
-
-service usf_pairing /system/bin/usf_pairing
-    user system
-    group system inet
-    disabled
-
-service usf_sw_calib /system/bin/usf_sw_calib
-    user system
     group system inet
     disabled
 
@@ -277,36 +273,6 @@ service imsdatadaemon /system/bin/imsdatadaemon
 #    group system wifi
 #    oneshot
 #
-
-service smonsir /system/bin/smonsir
-    user root
-    group root
-    oneshot
-    disabled
-
-service smprosrv /system/bin/smprosrv
-    user root
-    group root
-    oneshot
-    disabled
-
-on property:persist.sys.matsir.enable=1
-    setprop sys.sysmat.service.control start
-    start smonsir
-    start smprosrv
-
-service smeloop /system/bin/smeloop
-    class late_start
-    user root
-    group root
-    oneshot
-
-service immvibed /system/bin/immvibed
-    class late_start
-    user system
-    group system
-    oneshot
-
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
 
@@ -323,8 +289,7 @@ on property:sys.ims.DATA_DAEMON_STATUS=1
 service imscmservice /system/bin/imscmservice
    class main
    user system
-   group radio diag log
-   writepid /dev/cpuset/system-background/tasks
+   group radio diag inet log
 
 service ppd /system/bin/mm-pp-daemon
     class late_start
@@ -364,21 +329,30 @@ on charger
     chmod 0664 /sys/class/power_supply/bms/voltage_ocv
     start qcom-sh
 
+service displayfeature /system/bin/displayfeature
+    class late_start
+    user root
+    group root
+
+on property:init.svc.surfaceflinger=stopped
+    stop displayfeature
+
+on property:init.svc.surfaceflinger=running
+    start displayfeature
+
+on property:init.svc.surfaceflinger=restarting
+    stop displayfeature
+
 service ml_daemon /system/bin/ml_daemon
     class core
     user root
     group root
-    disabled
 
 service seald /system/bin/seald
     class late_start
     user root
     group system
-    disabled
-
-service bugreport_daemon /system/xbin/bugreport_daemon
-    class late_start
-    disabled
+    oneshot
 
 service energy-awareness /system/bin/energy-awareness
     class main
@@ -386,57 +360,20 @@ service energy-awareness /system/bin/energy-awareness
     group system
     oneshot
 
-on property:persist.sys.display_ce=0
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0xF0
-on property:persist.sys.display_ce=10
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0xF0
-on property:persist.sys.display_ce=11
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x10
-
-on property:persist.sys.display_cabc=0
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0xF00
-on property:persist.sys.display_cabc=1
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x100
-on property:persist.sys.display_cabc=2
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x200
-on property:persist.sys.display_cabc=3
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x300
-on property:persist.sys.display_cabc=4
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x400
-
-on property:persist.sys.display_level=0
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0xF000
-on property:persist.sys.display_level=1
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x1000
-on property:persist.sys.display_level=2
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x2000
-on property:persist.sys.display_level=3
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x3000
-on property:persist.sys.display_level=4
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x4000
-on property:persist.sys.display_level=5
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x5000
-on property:persist.sys.display_level=6
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0x6000
-
-on property:persist.sys.display_idle=1
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0xA0000
-on property:persist.sys.display_idle=0
-    write /sys/devices/virtual/graphics/fb0/msm_fb_dispparam 0xF0000
-
 service dts_configurator /system/bin/dts_configurator
-    class main
+    class late_start
     user system
-    group system
+    group system media audio
     oneshot
 
-service gamut_mode /system/bin/gamutmode
-    user root
-    oneshot
+service dtseagleservice /system/bin/dts_eagle_service
+    class late_start
+    user system
+    group audio media
     disabled
 
-on property:persist.sys.gamut_mode=*
-    start gamut_mode
+on property:init.svc.dts_configurator=stopped
+    start dtseagleservice
 
 service fidodaemon /system/vendor/bin/fidodaemon
     class late_start
@@ -448,25 +385,3 @@ service mtservice /system/bin/mtd
 
 service vsimservice /system/bin/vsimd
     class late_start
-
-service displayfeature /system/bin/displayfeature
-    class late_start
-    user root
-    group root
-
-on property:persist.sys.aries.power_profile=high
-    stop thermal-engine
-    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
- 
-on property:persist.sys.aries.power_profile=middle
-    stop thermal-engine
-    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
-    start thermal-engine
- 
-on property:persist.sys.aries.power_profile=low
-    stop thermal-engine
-    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 0
-    start thermal-engine
-
