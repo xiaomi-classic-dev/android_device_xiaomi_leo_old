@@ -17,5 +17,3 @@ Display | 2560x1440 pixels, 5.7"
 Rear Camera  | 13.0 MP, LED flash
 Front Camera | 4.0 MP
 Release Date | May. 2015
-
-![Xiaomi Mi Note Pro](http://img1.mydrivers.com/img/20150803/ce2ad72c660f4936853b8a25031e0f1b.png "Xiaomi Mi Note Pro")
