@@ -4,8 +4,6 @@ $(call inherit-product-if-exists, vendor/xiaomi/leo/leo-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/xiaomi/leo/overlay
 
-TARGET_OTA_ASSERT_DEVICE := NotePro,leo
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Dalvik/HWUI
