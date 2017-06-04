@@ -1,4 +1,4 @@
-LOCAL_PATH := device/xiaomi/leo
+DEVICE_PATH := device/xiaomi/leo
 
 USE_CAMERA_STUB := true
 
@@ -208,10 +208,10 @@ WPA_SUPPLICANT_VERSION          := VER_0_8_X
 #Recovery
 #RECOVERY_VARIANT := twrp
 ifneq ($(RECOVERY_VARIANT),twrp)
-#TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/recovery.fstab
+#TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/recovery.fstab
 else
 TW_THEME := portrait_hdpi
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/twrp/twrp.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/twrp/twrp.fstab
 RECOVERY_GRAPHICS_FORCE_USE_LINELENGTH := true
 DEVICE_RESOLUTION := 1080x1920
 RECOVERY_SDCARD_ON_DATA := true
@@ -229,7 +229,7 @@ endif
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_leo
-TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
