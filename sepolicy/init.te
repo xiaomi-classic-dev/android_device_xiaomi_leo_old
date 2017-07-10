@@ -1,0 +1,2 @@
+allow init vfat:dir { mounton };
+allow init proc_dirty_ratio:file { write };

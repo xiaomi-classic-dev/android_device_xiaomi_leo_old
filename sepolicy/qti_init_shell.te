@@ -1,0 +1,5 @@
+allow qti_init_shell bluetooth_loader_exec:file { read open };
+allow qti_init_shell sensors_prop:property_service set;
+allow qti_init_shell proc:dir { write };
+allow qti_init_shell sysfs_devices_system_cpu:file { setattr };
+allow qti_init_shell vfat:dir { search };

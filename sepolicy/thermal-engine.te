@@ -1,0 +1,4 @@
+allow thermal-engine system_data_file:dir { write add_name remove_name };
+# >neverallow< allow thermal-engine system_data_file:file { create write open setattr unlink };
+allow thermal-engine self:capability { chown fowner };
+allow thermal-engine vfat:file { read open getattr };
