@@ -1,6 +1,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(call inherit-product-if-exists, vendor/xiaomi/leo/leo-vendor.mk)
+$(call inherit-product, vendor/xiaomi/leo/leo-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/xiaomi/leo/overlay
 
