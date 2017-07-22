@@ -387,4 +387,7 @@
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
     <integer name="config_buttonBrightnessSettingDefault">153</integer>
 
+    <!-- Configuration to support SIM contact batch operation -->
+    <bool name="config_sim_phonebook_batch_operation">false</bool>
+
 </resources>
