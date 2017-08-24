@@ -280,7 +280,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.msm8994
+    power.msm8994 \
     android.hardware.power@1.0-impl
     
 # Ril
