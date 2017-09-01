@@ -312,20 +312,6 @@ on charger
     chmod 0664 /sys/class/power_supply/bms/voltage_ocv
     start qcom-sh
 
-service displayfeature /system/bin/displayfeature
-    class late_start
-    user root
-    group root
-
-on property:init.svc.surfaceflinger=stopped
-    stop displayfeature
-
-on property:init.svc.surfaceflinger=running
-    start displayfeature
-
-on property:init.svc.surfaceflinger=restarting
-    stop displayfeature
-
 service ml_daemon /system/bin/ml_daemon
     class core
     user root
