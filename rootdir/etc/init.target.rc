@@ -142,12 +142,6 @@ service perfd /system/vendor/bin/perfd
    user root
    disabled
 
-service select_sns_hal /system/bin/sh /system/bin/sensor_select.sh
-    class main
-    user root
-    group root
-    oneshot
-
 #service mpdecision /system/bin/mpdecision --avg_comp
 #   user root
 #   disabled
