@@ -14,7 +14,6 @@ bin/mm-pp-daemon
 bin/gpsone_daemon
 bin/rmt_storage
 bin/ssr_setup
-bin/sensor_select.sh
 bin/cnd
 bin/wcnss_filter
 bin/ssr_diag
@@ -31,7 +30,6 @@ bin/cnss_diag
 bin/ftmdaemon
 bin/cnss-daemon
 bin/rfs_access
-bin/displayfeature
 bin/pm-service
 bin/xtwifi-client
 bin/adsprpcd
@@ -41,7 +39,6 @@ bin/loc_launcher
 bin/sensors.qcom
 bin/wdsdaemon
 bin/port-bridge
-bin/ATFWD-daemon
 bin/imscmservice
 bin/tftp_server
 bin/dun-server
@@ -49,6 +46,7 @@ bin/wfdservice
 framework/com.qti.location.sdk.jar
 framework/com.qti.snapdragon.sdk.display.jar
 framework/embmslibrary.jar
+framework/qti-telephony-common.jar|25d6f5d2877efbb89ae937dc9e34ea6fd62e36b5
 framework/rcsservice.jar
 framework/ConnectivityExt.jar
 framework/tcmclient.jar
@@ -78,19 +76,17 @@ app/TimeService/TimeService.apk
 app/QtiTelephonyService/QtiTelephonyService.apk
 app/datastatusnotification/datastatusnotification.apk
 lib64/libmorpho_memory_allocator.so
+lib64/hw/sensors.leo.so:vendor/lib64/libsensors.leo.so
 lib64/hw/audio.primary.msm8994.so
-lib64/hw/sensors.leo.so
 lib64/hw/activity_recognition.msm8994.so
-lib64/libstagefright_soft_h264dec.so
-lib64/libstagefright_soft_h264enc.so
 lib64/egl/libGLES_android.so
 lib64/libstagefright_soft_ffmpegadec.so
 lib64/libstagefright_soft_flacdec.so
 lib64/libloc_ds_api.so
 lib64/libdashplayer.so
 lib64/libloc_api_v02.so
+lib64/libtinyalsa.so
 lib64/libmorpho_panorama.so
-lib64/librilqmiservices.so
 lib64/libmm-omxcore.so
 lib64/libinvensense_hal.so
 lib64/libqminvapi.so
@@ -98,11 +94,9 @@ lib/libmmjpeg_interface.so
 lib/soundfx/libdirac.so
 lib/libmorpho_memory_allocator.so
 lib/hw/audio.primary.msm8994.so
-lib/hw/sensors.leo.so
-lib/hw/camera.vendor.msm8994.so
+lib/hw/sensors.leo.so:vendor/lib/libsensors.leo.so
+lib/hw/camera.msm8994.so:lib/hw/camera.vendor.msm8994.so
 lib/hw/activity_recognition.msm8994.so
-lib/libstagefright_soft_h264dec.so
-lib/libstagefright_soft_h264enc.so
 lib/egl/libGLES_android.so
 lib/egl/egl.cfg
 lib/libstagefright_soft_ffmpegadec.so
@@ -112,9 +106,9 @@ lib/libdashplayer.so
 lib/libloc_api_v02.so
 lib/libqomx_core.so
 lib/libDiracAPI_SHARED.so
+lib/libtinyalsa.so
 lib/libmmcamera_interface.so
 lib/libmorpho_panorama.so
-lib/librilqmiservices.so
 lib/libmm-omxcore.so
 lib/libmm-qcamera.so
 lib/libinvensense_hal.so
@@ -132,7 +126,6 @@ vendor/app/imssettings/imssettings.apk
 vendor/lib64/libconnctrl.so
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/lib-imsvt.so
-vendor/lib64/libqmi_csvt_srvc.so
 vendor/lib64/libaudioalsa.so
 vendor/lib64/lib-dplmedia.so
 vendor/lib64/libmmrtpdecoder.so
@@ -162,7 +155,6 @@ vendor/lib64/libscale.so
 vendor/lib64/libqdp.so
 vendor/lib64/liblocationservice_glue.so
 vendor/lib64/libmmparser_lite.so
-vendor/lib64/libSHIMDivxDrm.so
 vendor/lib64/libqmi_encdec.so
 vendor/lib64/libdiag.so
 vendor/lib64/libTimeService.so
@@ -207,13 +199,12 @@ vendor/lib64/libtime_genoff.so
 vendor/lib64/libwfdcommonutils.so
 vendor/lib64/libsecureui.so
 vendor/lib64/libxtwifi_ulp_adaptor.so
-vendor/lib64/libllvm-qgl.so
 vendor/lib64/lib-rcsjni.so
 vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 vendor/lib64/hw/gatekeeper.msm8994.so
 vendor/lib64/hw/keystore.msm8994.so
 vendor/lib64/hw/flp.default.so
-vendor/lib64/hw/vulkan.msm8994.so
+vendor/lib64/hw/vulkan.msm8994.so|4ad6c6eae26801212e5fba318b3c6be407740c72
 vendor/lib64/libSecureUILib.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/librcc.so
@@ -267,7 +258,7 @@ vendor/lib64/libadreno_utils.so
 vendor/lib64/libmmwfdsrcinterface.so
 vendor/lib64/lib-imsxml.so
 vendor/lib64/libOmxAacDec.so
-vendor/lib64/libuiblur.so
+vendor/lib64/libuiblur.so|8d0275c4071423cad99862f50b79075db0807ad2
 vendor/lib64/libSecureSampleAuthClient.so
 vendor/lib64/libdataitems.so
 vendor/lib64/libqti-at.so
@@ -292,7 +283,7 @@ vendor/lib64/libRSDriver_adreno.so
 vendor/lib64/liblowi_client.so
 vendor/lib64/libacdbloader.so
 vendor/lib64/liblistensoundmodel2.so
-vendor/lib64/libqti-iop-client.so
+vendor/lib64/libqti-iop-client.so|317158bdc352aeebbfa4d4bf7420e38cfb80ad1c
 vendor/lib64/libwfdmmsink.so
 vendor/lib64/libaudcal.so
 vendor/lib64/sensors.ssc.so
@@ -324,14 +315,12 @@ vendor/lib64/libcneapiclient.so
 vendor/lib64/libOmxAmrwbplusDec.so
 vendor/lib64/libvendorconn.so
 vendor/lib64/libril-qc-qmi-1.so
-vendor/lib64/libDivxDrm.so
 vendor/lib64/liblowi_wifihal_nl.so
 vendor/lib64/libloc_ext.so
 vendor/lib64/libdpmframework.so
 vendor/lib64/libFlacSwDec.so
 vendor/lib64/librpmb.so
 vendor/lib64/librs_adreno.so
-vendor/lib64/libhwdaphal.so
 vendor/lib64/libalarmservice_jni.so
 vendor/lib64/libizat_core.so
 vendor/lib64/lib-rtpdaemoninterface.so
@@ -347,7 +336,6 @@ vendor/lib/libchromatix_imx258_sunny_liveshot.so
 vendor/lib/libmmcamera_vpu_module.so
 vendor/lib/libril-qc-radioconfig.so
 vendor/lib/libmmcamera2_pproc_modules.so
-vendor/lib/libmmcamera_isp_fovcrop_encoder40.so
 vendor/lib/lib-imsvt.so
 vendor/lib/libchromatix_imx230_cpp_hfr_60.so
 vendor/lib/libchromatix_ov4688_cpp_hfr_120.so
@@ -367,7 +355,6 @@ vendor/lib/librs_adreno_sha1.so
 vendor/lib/libchromatix_ov4688_default_video.so
 vendor/lib/libqmi_client_helper.so
 vendor/lib/lib-rcsimssjni.so
-vendor/lib/libmmcamera_isp_color_correct40.so
 vendor/lib/libgeofence.so
 vendor/lib/libchromatix_imx135_hfr_60.so
 vendor/lib/libchromatix_imx214_liteon_snapshot_w.so
@@ -389,7 +376,6 @@ vendor/lib/libchromatix_ov4688_liteon_default_video.so
 vendor/lib/libwfdrtsp.so
 vendor/lib/libaptXHD-1.0.0-rel-Android21-ARMv7A.so
 vendor/lib/libactuator_rohm_bu64244gwz.so
-vendor/lib/libmmcamera_isp_bg_stats44.so
 vendor/lib/libwfduibcsink.so
 vendor/lib/libmmcamera_isp_bcc44.so
 vendor/lib/libchromatix_imx214_liteon_cpp_hfr_60.so
@@ -397,7 +383,6 @@ vendor/lib/libqcci_legacy.so
 vendor/lib/libadsprpc.so
 vendor/lib/lib-rtpcore.so
 vendor/lib/libchromatix_s5k3m2xm_ofilm_hfr_90.so
-vendor/lib/libHevcSwEncoder.so
 vendor/lib/libchromatix_ov5670_sunny_cpp_preview.so
 vendor/lib/libchromatix_imx230_preview.so
 vendor/lib/libmmcamera_isp_wb46.so
@@ -406,11 +391,9 @@ vendor/lib/libchromatix_ov5670_sunny_default_video.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libchromatix_imx214_video_hd_hdr.so
 vendor/lib/libactuator_dw9714.so
-vendor/lib/libmmcamera_ubifocus_lib.so
 vendor/lib/libmmosal.so
 vendor/lib/libmmcamera_s5k3m2xm.so
 vendor/lib/libchromatix_s5k3m2xm_snapshot.so
-vendor/lib/libmmcamera_isp_fovcrop_viewfinder40.so
 vendor/lib/libmmcamera_isp_color_xform_video46.so
 vendor/lib/libmmcamera_s5k3m2xm_ofilm.so
 vendor/lib/libmmcamera_isp_fovcrop_encoder46.so
@@ -433,7 +416,6 @@ vendor/lib/libchromatix_imx230_cpp_preview.so
 vendor/lib/libchromatix_imx135_cpp_liveshot.so
 vendor/lib/libactuator_dw9761b_s5k3m2xm_camcorder.so
 vendor/lib/libchromatix_imx258_cpp_hfr_60.so
-vendor/lib/libSHIMDivxDrm.so
 vendor/lib/libactuator_ad5823_camcorder.so
 vendor/lib/libscve_stub.so
 vendor/lib/libchromatix_imx135_default_video.so
@@ -445,7 +427,6 @@ vendor/lib/libchromatix_imx214_liteon_cpp_snapshot.so
 vendor/lib/libchromatix_ov4688_cpp_liveshot.so
 vendor/lib/libchromatix_imx230_cpp_video.so
 vendor/lib/libdiag.so
-vendor/lib/libmmcamera_isp_clf44.so
 vendor/lib/libchromatix_imx258_common.so
 vendor/lib/libTimeService.so
 vendor/lib/libsi.so
@@ -458,7 +439,6 @@ vendor/lib/libdrmfs.so
 vendor/lib/libchromatix_imx230_cpp_video_hdr.so
 vendor/lib/libmmcamera_pdaf.so
 vendor/lib/libmmcamera_isp_cs_stats46.so
-vendor/lib/libmmcamera_isp_cs_stats44.so
 vendor/lib/lib-rtpcommon.so
 vendor/lib/libois_lc898122.so
 vendor/lib/libqmi_csi.so
@@ -489,7 +469,6 @@ vendor/lib/libchromatix_imx258_sunny_cpp_preview.so
 vendor/lib/liblistenjni.so
 vendor/lib/libbtnv.so
 vendor/lib/lib-imss.so
-vendor/lib/libmmcamera_isp_wb40.so
 vendor/lib/libchromatix_ov4688_snapshot.so
 vendor/lib/libactuator_ov8825_camcorder.so
 vendor/lib/libsettings.so
@@ -511,7 +490,6 @@ vendor/lib/lib-imsrcscmservice.so
 vendor/lib/liblowi_wifihal.so
 vendor/lib/libactuator_lc898212xd.so
 vendor/lib/libactuator_dw9716_camera.so
-vendor/lib/libmmcamera_isp_ihist_stats44.so
 vendor/lib/libchromatix_s5k3m2xm_ofilm_liveshot.so
 vendor/lib/libchromatix_s5k3m2xx_cpp_hfr_120.so
 vendor/lib/libchromatix_imx132_liveshot.so
@@ -589,24 +567,19 @@ vendor/lib/libchromatix_imx135_cpp_video.so
 vendor/lib/libsecureui.so
 vendor/lib/libchromatix_s5k3m2xm_hfr_120.so
 vendor/lib/libxtwifi_ulp_adaptor.so
-vendor/lib/libllvm-qgl.so
-vendor/lib/libWVStreamControlAPI_L1.so
 vendor/lib/lib-rcsjni.so
 vendor/lib/mediadrm/libdrmclearkeyplugin.so
-vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/hw/sound_trigger.primary.msm8994.so
 vendor/lib/hw/gatekeeper.msm8994.so
 vendor/lib/hw/keystore.msm8994.so
 vendor/lib/hw/flp.default.so
-vendor/lib/hw/vulkan.msm8994.so
+vendor/lib/hw/vulkan.msm8994.so|22250345bb513dbbf0c701a7d9ba6bc611cd5cce
 vendor/lib/libchromatix_imx258_sunny_cpp_hfr_120.so
 vendor/lib/libchromatix_imx258_snapshot.so
 vendor/lib/libSecureUILib.so
 vendor/lib/libmmcamera_isp_ihist_stats46.so
-vendor/lib/libmmcamera_isp_scaler_encoder44.so
 vendor/lib/libchromatix_ov4688_liteon_liveshot.so
 vendor/lib/libmmcamera_isp_clf46.so
-vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libchromatix_s5k3m2xx_hfr_90.so
 vendor/lib/libchromatix_imx135_hfr_120.so
 vendor/lib/libchromatix_imx258_preview.so
@@ -624,14 +597,12 @@ vendor/lib/libwfdmmsrc.so
 vendor/lib/libchromatix_imx258_cpp_hfr_120.so
 vendor/lib/libmmcamera_ppbase_module.so
 vendor/lib/libchromatix_imx135_cpp_hfr_120.so
-vendor/lib/libmmcamera_isp_color_xform_viewfinder40.so
 vendor/lib/libchromatix_ov4688_liteon_hfr_60.so
 vendor/lib/libchromatix_s5k3m2xm_ofilm_cpp_snapshot.so
 vendor/lib/libchromatix_imx214_liteon_snapshot_hdr.so
 vendor/lib/libchromatix_imx230_snapshot_hdr.so
 vendor/lib/libchromatix_s5k3m2xx_cpp_video_4k.so
 vendor/lib/librmp.so
-vendor/lib/libubifocus.so
 vendor/lib/libactuator_lc898122_camera.so
 vendor/lib/libchromatix_imx230_common.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
@@ -641,7 +612,6 @@ vendor/lib/libchromatix_s5k3m2xm_cpp_video.so
 vendor/lib/libmmcamera_isp_scaler_encoder46.so
 vendor/lib/libQtiTether.so
 vendor/lib/libacdbmapper.so
-vendor/lib/libmmcamera_imglib_faceproc_adspstub.so
 vendor/lib/libactuator_lc898212xd_camera.so
 vendor/lib/libwfdhdcpcp.so
 vendor/lib/libchromatix_ov5670_cpp_video.so
@@ -674,7 +644,6 @@ vendor/lib/libmmcamera_isp_gtm46.so
 vendor/lib/rfsa/adsp/libapps_mem_heap.so
 vendor/lib/rfsa/adsp/fastrpc_shell_0
 vendor/lib/rfsa/adsp/libfastcvadsp.so
-vendor/lib/rfsa/adsp/libadsp_fd_skel.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 vendor/lib/libdpmfdmgr.so
@@ -703,7 +672,6 @@ vendor/lib/libconfigdb.so
 vendor/lib/libOmxMux.so
 vendor/lib/libchromatix_imx214_liteon_common.so
 vendor/lib/libchromatix_imx258_cpp_snapshot.so
-vendor/lib/libmmcamera_isp_color_xform_encoder40.so
 vendor/lib/libchromatix_s5k3m2xm_ofilm_cpp_liveshot.so
 vendor/lib/libchromatix_imx258_sunny_postproc.so
 vendor/lib/libmmcamera_isp_bf_stats44.so
@@ -731,7 +699,6 @@ vendor/lib/libdrc.so
 vendor/lib/libactuator_rohm_bu64244gwz_camcorder.so
 vendor/lib/libchromatix_ov5670_cpp_liveshot.so
 vendor/lib/libmdmdetect.so
-vendor/lib/libmmcamera_isp_luma_adaptation40.so
 vendor/lib/libchromatix_imx258_sunny_snapshot_street.so
 vendor/lib/libchromatix_imx258_default_video.so
 vendor/lib/libmmcamera_isp_color_xform_encoder46.so
@@ -774,10 +741,8 @@ vendor/lib/libchromatix_imx214_liteon_snapshot.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libchromatix_imx258_sunny_cpp_hfr_90.so
 vendor/lib/libchromatix_ov4688_liveshot.so
-vendor/lib/libomx-dts.so
 vendor/lib/libactuator_dw9763_s5k3m2xm_camcorder.so
 vendor/lib/libjpegdmahw.so
-vendor/lib/libwvdrm_L1.so
 vendor/lib/libchromatix_ov5670_sunny_snapshot.so
 vendor/lib/libSecureSampleAuthClient.so
 vendor/lib/libactuator_dw9761b_s5k3m2xm_camera.so
@@ -796,7 +761,6 @@ vendor/lib/libactuator_bu64244gwz_camcorder.so
 vendor/lib/libmmcamera_onsemi_cat24c32_eeprom.so
 vendor/lib/libdpmnsrm.so
 vendor/lib/libchromatix_s5k3m2xx_cpp_snapshot.so
-vendor/lib/libsrsprocessing.so
 vendor/lib/libchromatix_imx230_default_video.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libqmi_cci.so
@@ -808,7 +772,6 @@ vendor/lib/libchromatix_imx135_postproc.so
 vendor/lib/libsensor1.so
 vendor/lib/libmmcamera_isp_rs_stats46.so
 vendor/lib/libchromatix_ov4688_liteon_hfr_120.so
-vendor/lib/libwvm.so
 vendor/lib/libRecoFace.so
 vendor/lib/libmm-abl-oem.so
 vendor/lib/libquipc_os_api.so
@@ -883,7 +846,7 @@ vendor/lib/libchromatix_imx132_default_video.so
 vendor/lib/libchromatix_s5k3m2xx_default_video.so
 vendor/lib/liblistensoundmodel2.so
 vendor/lib/libchromatix_imx214_liteon_video_hd.so
-vendor/lib/libqti-iop-client.so
+vendor/lib/libqti-iop-client.so|454ab8c917ec32d7f33a1f6bf304c47bccbcb36a
 vendor/lib/libwfdmmsink.so
 vendor/lib/libchromatix_imx214_liteon_preview.so
 vendor/lib/libmmcamera2_frame_algorithm.so
@@ -892,7 +855,6 @@ vendor/lib/libchromatix_ov4688_liteon_cpp_liveshot.so
 vendor/lib/libchromatix_ov5670_postproc.so
 vendor/lib/libchromatix_s5k3m2xm_ofilm_postproc.so
 vendor/lib/libmmcamera_isp_gamma44.so
-vendor/lib/libmmcamera_isp_bf_scale_stats44.so
 vendor/lib/libactuator_lc898212xd_camcorder.so
 vendor/lib/libchromatix_s5k3m2xm_postproc.so
 vendor/lib/libaudcal.so
@@ -929,7 +891,6 @@ vendor/lib/libchromatix_s5k3m2xx_cpp_hfr_60.so
 vendor/lib/libactuator_rohm_bu64243gwz_camera.so
 vendor/lib/libchromatix_imx214_default_video.so
 vendor/lib/libchromatix_imx214_snapshot_hdr.so
-vendor/lib/libmmcamera_isp_scaler_viewfinder44.so
 vendor/lib/libchromatix_ov5670_cpp_hfr_120.so
 vendor/lib/libchromatix_imx214_hfr_90.so
 vendor/lib/libqmi.so
@@ -939,7 +900,6 @@ vendor/lib/libmmcamera_isp_clamp_video40.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libSonyIMX230PdafLibrary.so
 vendor/lib/libchromatix_s5k3m2xm_ofilm_cpp_hfr_120.so
-vendor/lib/libmmcamera_isp_rs_stats44.so
 vendor/lib/libmmcamera_ov5645.so
 vendor/lib/libmmcamera_isp_scaler_video46.so
 vendor/lib/libchromatix_imx214_cpp_hfr_90.so
@@ -956,7 +916,6 @@ vendor/lib/libwqe.so
 vendor/lib/libCB.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libwfdservice.so
-vendor/lib/libts_detected_face_jni.so
 vendor/lib/libwms.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libchromatix_imx214_liteon_video_hd_hdr.so
@@ -977,7 +936,6 @@ vendor/lib/libvendorconn.so
 vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libchromatix_s5k3m2xm_ofilm_hfr_60.so
 vendor/lib/libchromatix_imx214_liteon_hfr_90.so
-vendor/lib/libDivxDrm.so
 vendor/lib/liblowi_wifihal_nl.so
 vendor/lib/libchromatix_ov5670_sunny_common.so
 vendor/lib/libchromatix_s5k3m2xm_ofilm_snapshot.so
@@ -996,7 +954,6 @@ vendor/lib/libchromatix_s5k3m2xm_ofilm_common.so
 vendor/lib/libchromatix_imx214_liteon_hfr_60.so
 vendor/lib/libchromatix_s5k3m2xx_video_4k.so
 vendor/lib/libactuator_dw9761b_camcorder.so
-vendor/lib/libhwdaphal.so
 vendor/lib/libchromatix_s5k3m2xm_cpp_hfr_90.so
 vendor/lib/libchromatix_ov5670_sunny_cpp_liveshot.so
 vendor/lib/libalarmservice_jni.so
@@ -1021,9 +978,9 @@ vendor/etc/audio_effects.conf
 etc/people_gender.dat
 etc/dpm/nsrm/NsrmConfiguration.xml
 etc/dpm/dpm.conf
-etc/data/dsi_config.xml
-etc/data/netmgr_config.xml
-etc/data/qmi_config.xml
+etc/data/dsi_config.xml|e5af4b3a18360de4b946871c0f47385bf9527f15
+etc/data/netmgr_config.xml|278375fd68c274993f33e4c87b0e99609694b294
+etc/data/qmi_config.xml|6bfc33b8ef4d34e293114948809bb0b72b8bec7d
 etc/wfdconfig.xml
 etc/sensors/sensor_def_qcomdev.conf
 etc/firmware/cpp_firmware_v1_8_0.fw
@@ -1036,9 +993,9 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/nvm_tlv.bin
 etc/firmware/rampatch_tlv_3.0.tlv
 etc/firmware/rampatch_tlv_1.3.tlv
-etc/firmware/wcd9320/wcd9320_mbhc.bin
-etc/firmware/wcd9320/wcd9320_mad_audio.bin
-etc/firmware/wcd9320/wcd9320_anc.bin
+etc/firmware/wcd9320/wcd9320_mbhc.bin|df8fd2ccfad6b660f97248da8a1cd526efe65f48
+etc/firmware/wcd9320/wcd9320_mad_audio.bin|2cde69582b735c27968aeb48a8f381e5210a1923
+etc/firmware/wcd9320/wcd9320_anc.bin|58b84929086c5fa8cfc8bb8465ab46f8fb4f7176
 etc/firmware/nvm_tlv_2.1.bin
 etc/firmware/rampatch_tlv.img
 etc/firmware/cpp_firmware_v1_1_6.fw
@@ -1072,6 +1029,7 @@ etc/permissions/embms.xml
 etc/permissions/com.qualcomm.location.xml
 etc/permissions/qti_permissions.xml
 etc/permissions/com.quicinc.cne.xml
+etc/permissions/qti_telephony_common.xml
 etc/acdbdata/Forte/Forte_Speaker_cal.acdb
 etc/acdbdata/Forte/Forte_Headset_cal.acdb
 etc/acdbdata/Forte/Forte_General_cal.acdb
@@ -1083,7 +1041,6 @@ etc/android_model_facea.dat
 etc/wfdconfigsink.xml
 etc/android_model_faceg.dat
 etc/ftm_test_config
-etc/mcd_default.conf
 etc/thermal-engine-8994.conf
 etc/cne/SwimConfig.xml
 etc/cne/andsfCne.xml
