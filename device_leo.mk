@@ -269,6 +269,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtinyxml2 \
     libxml2
+
+# Libshims
+PRODUCT_PACKAGES += \
+    libshims_ims
     
 #stlport
 PRODUCT_PACKAGES += \
