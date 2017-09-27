@@ -41,7 +41,7 @@ ro.hdmi.enable=true
 persist.speaker.prot.enable=true
 #0 is default(30 min)
 persist.spkr.cal.duration=0
-qcom.hw.aac.encoder=false
+qcom.hw.aac.encoder=true
 #
 # system props for the cne module
 #
@@ -97,7 +97,7 @@ persist.timed.enable=true
 #
 # 196608 is decimal for 0x30000 to report major/minor versions as 3/0
 # 196609 is decimal for 0x30001 to report major/minor versions as 3/1
-ro.opengles.version=196609
+ro.opengles.version=196610
 
 # System property for cabl
 ro.qualcomm.cabl=0
@@ -125,6 +125,7 @@ ro.bluetooth.a4wp=true
 #snapdragon value add features
 #
 ro.qc.sdk.audio.ssr=false
+persist.audio.ssr.3mic=false
 ##fluencetype can be "fluence" or "fluencepro" or "none"
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
@@ -149,13 +150,25 @@ audio.offload.buffer.size.kb=32
 audio.offload.video=true
 
 #Disable offload except for PCM
-audio.offload.disable=1
+audio.offload.disable=0
 
-#Enable 16 bit PCM offload by default
+#Disable 16 bit PCM offload by default
 audio.offload.pcm.16bit.enable=true
+
+audio.offload.passthrough=false
+audio.offload.multiple.enabled=false
 
 #Enable 24 bit PCM offload by default
 audio.offload.pcm.24bit.enable=true
+
+#Enable audio track offload by default
+audio.offload.track.enable=false
+
+# default minimum length allowed for offload
+audio.offload.min.duration.secs=15
+
+#Enable music through deep buffer
+audio.deep_buffer.media=true
 
 #property to enable VDS WFD solution
 persist.hwc.enable_vds=1
