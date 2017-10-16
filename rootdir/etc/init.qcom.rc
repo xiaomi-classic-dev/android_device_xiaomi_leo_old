@@ -352,8 +352,9 @@ on post-fs-data
     chmod 0660 /proc/touchscreen/edge_touch_mode
 
     # Key disabler
-    chown root system /proc/touchscreen/nav_button_enable
-    chmod 0660 /proc/touchscreen/nav_button_enable
+    chown root system /sys/bus/i2c/drivers/cyttsp_streetfighter/2-0028/keys_off
+    chmod 0664 /sys/bus/i2c/drivers/cyttsp_streetfighter/2-0028/keys_off
+    restorecon /sys/bus/i2c/drivers/cyttsp_streetfighter/2-0028/keys_off
 
     # Vibrator
     chown system system /sys/class/timed_output/vibrator/vtg_default
