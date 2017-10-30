@@ -53,7 +53,7 @@ on early-boot
     write /sys/module/pil_msa/parameters/modem_auth_timeout_ms ${persist.sys.modem_auth_timeout}
     write /sys/module/peripheral_loader/parameters/proxy_timeout_ms ${persist.sys.pil_proxy_timeout}
     write /sys/kernel/boot_adsp/boot 1
-    exec u:r:qti_init_shell:s0 -- /init.qcom.early_boot.sh
+    exec /init.qcom.early_boot.sh
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -393,7 +393,6 @@ on post-fs-data
 service qfintverify /sbin/qfintverify
     user root
     class core
-    seclabel u:r:qfips:s0
     oneshot
 
 service qcomsysd /system/bin/qcom-system-daemon
@@ -947,7 +946,6 @@ service hcidump /system/bin/sh /system/etc/hcidump.sh
 service charger /charger
     class charger
     group system graphics
-    seclabel u:r:healthd:s0
     writepid /dev/cpuset/system-background/tasks
 
 service ssr_diag /system/bin/ssr_diag
@@ -1070,7 +1068,6 @@ service xiaomi_hwaddrs /system/bin/xiaomi_hwaddrs
     user root
     group system wifi
     oneshot
-    seclabel u:r:xiaomi_hwaddrs:s0
 
 # Running hwaddrs under init is enforcing 0600, we need more
 on property:init.svc.xiaomi_hwaddrs=stopped
