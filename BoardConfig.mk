@@ -55,6 +55,7 @@ BOARD_USES_OPENSSL_SYMBOLS := true
 
 # Enable keymaster app checking
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+TARGET_PROVIDES_KEYMASTER := true
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
