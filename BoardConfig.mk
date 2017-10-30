@@ -224,6 +224,6 @@ TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_leo
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
+# include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += device/xiaomi/leo/sepolicy
+# BOARD_SEPOLICY_DIRS += device/xiaomi/leo/sepolicy
