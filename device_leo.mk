@@ -318,9 +318,7 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8994 \
-    context_hub.default \
-    android.hardware.sensors@1.0-impl \
-    android.hardware.contexthub@1.0-impl
+    android.hardware.sensors@1.0-impl
 
 # Thermal HAL
 PRODUCT_PACKAGES += \
