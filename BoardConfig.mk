@@ -46,7 +46,6 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
 # Assertions
-TARGET_BOARD_INFO_FILE ?= $(DEVICE_PATH)/board-info.txt
 TARGET_OTA_ASSERT_DEVICE := NotePro,leo
 
 HAVE_ADRENO_SOURCE:= false
@@ -221,10 +220,6 @@ TW_DEFAULT_LANGUAGE := zh_CN
 TW_NO_EXFAT_FUSE := true
 TW_NO_EXFAT := true
 endif
-
-# Releasetools
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_leo
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # SELinux
 # include device/qcom/sepolicy/sepolicy.mk
