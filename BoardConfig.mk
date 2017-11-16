@@ -157,6 +157,9 @@ TARGET_HW_DISK_ENCRYPTION := false
 #Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
+# Filesystem
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+
 # Power
 TARGET_POWERHAL_VARIANT := qcom
 
