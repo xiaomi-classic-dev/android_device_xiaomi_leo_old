@@ -9,7 +9,7 @@
 <permissions>
     <!--  Request permissions for DIAG, Radio and QMI -->
     <permission name="com.qualcomm.permission.INTERFACE_DIAG">
-        <group gid="qcom_diag" />
+        <group gid="oem_2950" />
     </permission>
     <permission name="com.qualcomm.permission.INTERFACE_RADIO">
         <group gid="radio" />
