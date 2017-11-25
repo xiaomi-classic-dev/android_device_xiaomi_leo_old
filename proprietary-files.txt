@@ -24,10 +24,6 @@ etc/acdbdata/Forte/Forte_Headset_cal.acdb
 etc/acdbdata/Forte/Forte_Hdmi_cal.acdb
 etc/acdbdata/Forte/Forte_Handset_cal.acdb
 etc/acdbdata/Forte/Forte_Speaker_cal.acdb
-lib/hw/audio.primary.msm8994.so
-lib/libtinyalsa.so
-lib64/hw/audio.primary.msm8994.so
-lib64/libtinyalsa.so
 vendor/etc/audio_effects.conf
 vendor/etc/audio_output_policy.conf
 vendor/lib/hw/sound_trigger.primary.msm8994.so
