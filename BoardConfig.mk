@@ -5,7 +5,7 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/xiaomi/leo/BoardConfigVendor.mk
 
-#Platform
+# Platform
 TARGET_BOARD_PLATFORM := msm8994
 TARGET_BOOTLOADER_BOARD_NAME := msm8994
 TARGET_NO_BOOTLOADER := true
@@ -13,7 +13,7 @@ BOOTLOADER_PLATFORM := msm8994 # use msm8994 LK configuration
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno430
 TARGET_BOARD_SUFFIX := _64
 
-#Arch
+# Arch
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
@@ -101,7 +101,7 @@ WCNSS_FILTER_USES_SIBS := true
 USE_OPENGL_RENDERER := true
 BOARD_USE_LEGACY_UI := true
 
-#Kernel
+# Kernel
 TARGET_KERNEL_SOURCE := kernel/xiaomi/leo
 TARGET_KERNEL_CONFIG := leo_user_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5 androidboot.selinux=permissive
@@ -143,7 +143,7 @@ BOARD_QTI_CAMERA_32BIT_ONLY := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
 
-#Light HAL
+# Light HAL
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Include
@@ -155,10 +155,10 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
-#Disable HW based full disk encryption
+# Disable HW based full disk encryption
 TARGET_HW_DISK_ENCRYPTION := false
 
-#Enable peripheral manager
+# Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
 # Filesystem
@@ -205,7 +205,7 @@ WIFI_DRIVER_FW_PATH_STA         := "sta"
 TARGET_USES_QCOM_WCNSS_QMI      := true
 WPA_SUPPLICANT_VERSION          := VER_0_8_X
 
-#Recovery
+# Recovery
 #RECOVERY_VARIANT := twrp
 ifneq ($(RECOVERY_VARIANT),twrp)
 #TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/recovery.fstab

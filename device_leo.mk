@@ -13,13 +13,13 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwu
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
-#media
+# media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
-#audio
+# audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
     $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
@@ -32,12 +32,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
     $(LOCAL_PATH)/audio/surround_sound_3mic/surround_sound_rec_AZ.cfg:system/etc/surround_sound_3mic/surround_sound_rec_AZ.cfg
 
-#Sensor
+# Sensor
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sensor/sensors/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf \
     $(LOCAL_PATH)/sensor/sensor_diag.cfg:system/etc/sensor_diag.cfg
 
-#keylayout
+# keylayout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/cyttsp_button.kl:system/usr/keylayout/cyttsp_button.kl \
     $(LOCAL_PATH)/keylayout/synaptics_dsx.kl:system/usr/keylayout/synaptics_dsx.kl \
@@ -45,13 +45,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
 
-#hostapd
+# hostapd
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny \
     $(LOCAL_PATH)/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
 
-#misc
+# misc
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/misc,system/etc)
 
@@ -100,7 +100,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml
 
-#FEATURE_OPENGLES_EXTENSION_PACK support string config file
+# FEATURE_OPENGLES_EXTENSION_PACK support string config file
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
  
@@ -108,7 +108,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     prebuilts/sdk/org.apache.http.legacy/org.apache.http.legacy.jar:/system/framework/org.apache.http.legacy.jar
 
-#ANT+ stack
+# ANT+ stack
 PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     AntHalService \
@@ -185,7 +185,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl
 
-#GNSS HAL
+# GNSS HAL
 PRODUCT_PACKAGES += \
     libshims_get_process_name \
     libshims_is_wifi_driver_loaded \
@@ -290,7 +290,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshims_ims
     
-#stlport
+# stlport
 PRODUCT_PACKAGES += \
     libstlport
 
@@ -315,7 +315,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-#USB HAL
+# USB HAL
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
