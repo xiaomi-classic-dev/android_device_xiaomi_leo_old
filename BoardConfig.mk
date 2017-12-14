@@ -186,9 +186,8 @@ TARGET_RIL_VARIANT := caf
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
-# CM Hardware
-BOARD_USES_CM_HARDWARE = true
-BOARD_HARDWARE_CLASS := device/xiaomi/leo/cmhw
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/lineagehw
 
 # Wifi
 BOARD_HAS_QCOM_WLAN             := true
