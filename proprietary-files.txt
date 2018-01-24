@@ -763,7 +763,6 @@ bin/qcom-system-daemon
 bin/qseecomd
 vendor/bin/fidodaemon
 vendor/lib/hw/keystore.msm8994.so
-vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/qcdrm/playready/lib/drm/libdrmprplugin_customer.so
 vendor/lib/qcdrm/playready/lib/libprdrmdecrypt_customer.so
 vendor/lib/qcdrm/playready/lib/libtzplayready_customer.so
@@ -784,7 +783,6 @@ vendor/lib/libsi.so
 vendor/lib/libssd.so
 vendor/lib/libStDrvInt.so
 vendor/lib64/hw/keystore.msm8994.so
-vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 vendor/lib64/libavenhancements.so
 vendor/lib64/libQSEEComAPI.so
 vendor/lib64/libdrmfs.so
@@ -1007,8 +1005,6 @@ bin/subsystem_ramdump
 bin/wdsdaemon
 
 # Media
-lib/libmm-omxcore.so
-lib64/libmm-omxcore.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib64/libmm-color-convertor.so
 
