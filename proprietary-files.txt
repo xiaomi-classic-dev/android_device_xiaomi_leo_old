@@ -24,7 +24,6 @@ etc/acdbdata/Forte/Forte_Headset_cal.acdb
 etc/acdbdata/Forte/Forte_Hdmi_cal.acdb
 etc/acdbdata/Forte/Forte_Handset_cal.acdb
 etc/acdbdata/Forte/Forte_Speaker_cal.acdb
-vendor/etc/audio_effects.conf
 vendor/etc/audio_output_policy.conf
 vendor/lib/hw/sound_trigger.primary.msm8994.so
 vendor/lib/libacdb-fts.so
@@ -61,6 +60,10 @@ bin/hci_qcomm_init
 bin/port-bridge
 bin/wcnss_filter
 etc/ftm_test_config
+lib/libaptX_encoder.so
+lib/libaptXHD_encoder.so
+lib64/libaptX_encoder.so
+lib64/libaptXHD_encoder.so
 vendor/lib/libaptX-1.0.0-rel-Android21-ARMv7A.so
 vendor/lib/libaptXHD-1.0.0-rel-Android21-ARMv7A.so
 vendor/lib/libaptXScheduler.so
@@ -256,6 +259,7 @@ vendor/lib/libchromatix_imx135_cpp_preview.so
 vendor/lib/libchromatix_imx135_cpp_snapshot.so
 vendor/lib/libchromatix_imx135_cpp_video.so
 vendor/lib/libchromatix_imx135_cpp_video_hd.so
+vendor/lib/libchromatix_imx135_default_video.so
 vendor/lib/libchromatix_imx135_hfr_120.so
 vendor/lib/libchromatix_imx135_hfr_60.so
 vendor/lib/libchromatix_imx135_hfr_90.so
@@ -902,7 +906,6 @@ vendor/qcril.db
 
 # Sensors
 bin/sensors.qcom
-etc/sensor_diag.cfg
 etc/sensors/sensor_def_qcomdev.conf
 lib/hw/activity_recognition.msm8994.so
 lib/hw/sensors.leo.so:vendor/lib/libsensors.leo.so
