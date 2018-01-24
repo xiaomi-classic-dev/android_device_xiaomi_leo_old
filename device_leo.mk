@@ -219,6 +219,7 @@ PRODUCT_PACKAGES += \
 
 # Keystore
 PRODUCT_PACKAGES += \
+    keystone.msm8994 \
     android.hardware.keymaster@3.0-impl
 
 # IRSC
@@ -237,6 +238,7 @@ PRODUCT_PACKAGES += \
     libdashplayer \
     libdivxdrmdecrypt \
     libextmedia_jni \
+    libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxCore \
