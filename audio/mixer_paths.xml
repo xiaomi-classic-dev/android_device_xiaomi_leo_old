@@ -72,7 +72,16 @@
     <ctl name="SLIMBUS_4_RX Audio Mixer MultiMedia2" value="0" />
     <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia5 Mixer AFE_PCM_TX" value="0" />
+    <ctl name="MultiMedia4 Mixer MI2S_TX" value="0" />
     <ctl name="MultiMedia1 Mixer MI2S_TX" value="0" />
+    <ctl name="MultiMedia7 Mixer MI2S_TX" value="0" />
+    <ctl name="MultiMedia10 Mixer MI2S_TX" value="0" />
+    <ctl name="MultiMedia11 Mixer MI2S_TX" value="0" />
+    <ctl name="MultiMedia12 Mixer MI2S_TX" value="0" />
+    <ctl name="MultiMedia13 Mixer MI2S_TX" value="0" />
+    <ctl name="MultiMedia14 Mixer MI2S_TX" value="0" />
+    <ctl name="MultiMedia15 Mixer MI2S_TX" value="0" />
+    <ctl name="MultiMedia16 Mixer MI2S_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_4_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SEC_AUX_PCM_UL_TX" value="0" />
@@ -301,6 +310,9 @@
     <ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia6" value="0" />
     <ctl name="MultiMedia1 Mixer SEC_AUX_PCM_UL_TX" value="0" />
     <!-- anc headset -->
+    <!-- speaker anc combo -->
+    <ctl name="RX4 DSM MUX" value="CIC_OUT" />
+    <ctl name="RX6 DSM MUX" value="CIC_OUT" />
     <!-- speaker anc combo end -->
     <!-- IIR/voice anc -->
     <ctl name="IIR1 Band1" id ="0" value="268435456" />
@@ -370,28 +382,24 @@
     <!-- listen end-->
     <!-- afe-proxy -->
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="0" />
-
-    <!-- surround sound record -->
-    <ctl name="Input Num Channel" value="0" />
-    <ctl name="Output Num Channel" value="0" />
-    <ctl name="Out Channel1" id="0" value="0" />
-    <ctl name="Out Channel1" id="1" value="0" />
-    <ctl name="Out Channel1" id="2" value="0" />
-    <ctl name="Out Channel2" id="0" value="0" />
-    <ctl name="Out Channel2" id="1" value="0" />
-    <ctl name="Out Channel2" id="2" value="0" />
-    <ctl name="Out Channel3" id="0" value="0" />
-    <ctl name="Out Channel3" id="1" value="0" />
-    <ctl name="Out Channel3" id="2" value="0" />
-    <ctl name="Out Channel4" id="0" value="0" />
-    <ctl name="Out Channel4" id="1" value="0" />
-    <ctl name="Out Channel4" id="2" value="0" />
-    <!-- surround sound record end -->
+    <!-- afe-proxy end-->
+    <ctl name="AFE_PCM_RX Port Mixer PRI_MI2S_TX" value="0" />
 
     <!-- ADSP testfwk -->
     <ctl name="SLIMBUS_DL_HL Switch" value="0" />
     <!-- ADSP testfwk end-->
 
+    <!-- HIFI -->
+    <ctl name="Volume" value="205" />
+    <ctl name="Automute Level" value="120" />
+    <ctl name="Filter Shape" value="Minimum Phase" />
+    <ctl name="DPLL DSD Bandwidth" value="1" />
+    <ctl name="DPLL I2S Bandwidth" value="1" />
+    <ctl name="THD Compensation" value="0" />
+    <ctl name="THD2 Compensation" value="255" />
+    <ctl name="THD3 Compensation" value="1" />
+    <ctl name="Custom Filter" value="OFF" />
+    <ctl name="Smartpa Preset" value="0" />
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="deep-buffer-playback">
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
@@ -503,62 +511,6 @@
     <path name="low-latency-playback speaker-and-usb-headphones">
         <path name="low-latency-playback usb-headphones" />
         <path name="low-latency-playback" />
-    </path>
-
-    <path name="audio-ull-playback">
-        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia3" value="1" />
-    </path>
-
-     <path name="audio-ull-playback speaker">
-         <ctl name="TERT_MI2S_RX Audio Mixer MultiMedia3" value="1" />
-    </path>
-
-    <path name="audio-ull-playback hifi-headphones">
-         <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia3" value="1" />
-    </path>
-
-    <path name="audio-ull-playback speaker-protected">
-        <path name="audio-ull-playback" />
-    </path>
-
-    <path name="audio-ull-playback headphones">
-      <path name="audio-ull-playback" />
-    </path>
-
-    <path name="audio-ull-playback speaker-and-headphones">
-        <path name="audio-ull-playback" />
-        <path name="audio-ull-playback headphones" />
-    </path>
-
-    <path name="audio-ull-playback hdmi">
-        <ctl name="HDMI Mixer MultiMedia3" value="1" />
-    </path>
-
-    <path name="audio-ull-playback bt-sco">
-        <ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia3" value="1" />
-    </path>
-
-    <path name="audio-ull-playback bt-sco-wb">
-        <ctl name="AUX PCM SampleRate" value="16000" />
-        <path name="audio-ull-playback bt-sco" />
-    </path>
-
-    <path name="audio-ull-playback speaker-and-hdmi">
-        <path name="audio-ull-playback hdmi" />
-        <path name="audio-ull-playback" />
-    </path>
-
-    <path name="audio-ull-playback afe-proxy">
-        <ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="1" />
-    </path>
-
-    <path name="audio-ull-playback usb-headphones">
-        <path name="audio-ull-playback afe-proxy" />
-    </path>
-
-    <path name="audio-ull-playback speaker-and-usb-headphones">
-        <path name="audio-ull-playback usb-headphones" />
-        <path name="audio-ull-playback" />
     </path>
 
     <path name="multi-channel-playback hdmi">
@@ -904,22 +856,6 @@
     <path name="audio-record">
         <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="1" />
     </path>
-
-    <path name="audio-record-3mic-ssr">
-        <ctl name="Input Num Channel" value="3" />
-        <ctl name="Output Num Channel" value="4" />
-        <ctl name="Out Channel1" id="0" value="16384" />
-        <ctl name="Out Channel1" id="1" value="0" />
-        <ctl name="Out Channel1" id="2" value="0" />
-        <ctl name="Out Channel2" id="0" value="0" />
-        <ctl name="Out Channel2" id="1" value="16384" />
-        <ctl name="Out Channel2" id="2" value="0" />
-        <ctl name="Out Channel3" id="0" value="0" />
-        <ctl name="Out Channel3" id="1" value="0" />
-        <ctl name="Out Channel3" id="2" value="16384" />
-        <ctl name="MultiMedia3 Mixer SLIM_0_TX" value="1" />
-    </path>
-
 
     <path name="audio-record usb-headset-mic">
         <ctl name="MultiMedia1 Mixer AFE_PCM_TX" value="1" />
@@ -1672,19 +1608,6 @@
         <ctl name="ADC5 Volume" value="20" />
     </path>
 
-    <path name="three-mic">
-        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
-        <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
-        <ctl name="AIF1_CAP Mixer SLIM TX9" value="1" />
-        <ctl name="SLIM_0_TX Channels" value="Three" />
-        <ctl name="SLIM TX7 MUX" value="DEC9" />
-        <ctl name="DEC9 MUX" value="DMIC5" />
-        <ctl name="SLIM TX8 MUX" value="DEC7" />
-        <ctl name="DEC7 MUX" value="DMIC1" />
-        <ctl name="SLIM TX9 MUX" value="DEC10" />
-        <ctl name="DEC10 MUX" value="DMIC3" />
-    </path>
-
     <path name="handset-stereo-mic">
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
@@ -2276,14 +2199,6 @@
     <path name="listen-handset-mic">
         <ctl name="MADONOFF Switch" value="1" />
         <ctl name="MAD Input" value="DMIC1" />
-    </path>
-
-    <path name="unprocessed-handset-mic">
-        <path name="handset-mic" />
-    </path>
-
-    <path name="unprocessed-mic">
-        <path name="unprocessed-handset-mic" />
     </path>
 
     <!-- Added for ADSP testfwk -->
