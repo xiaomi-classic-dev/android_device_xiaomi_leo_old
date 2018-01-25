@@ -506,7 +506,7 @@ on property:vold.decrypt=trigger_restart_framework
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-service cnd /system/bin/cnd
+service cnd /system/vendor/bin/cnd
     class main
     socket cnd stream 660 root inet
 
@@ -599,13 +599,6 @@ service hciattach_ath3k /system/bin/sh /system/etc/init.ath3k.bt.sh
      disabled
      oneshot
 
-service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin inet
-    disabled
-    oneshot
-
 service bt-sap /system/bin/sapd 15
     user bluetooth
     group bluetooth net_bt_admin
@@ -642,13 +635,6 @@ service qmuxd /system/bin/qmuxd
 
 service netmgrd /system/bin/netmgrd
     class main
-    disabled
-
-service ipacm-diag /system/bin/ipacm-diag
-    class main
-    user system
-    socket ipacm_log_file dgram 660 system net_admin
-    group net_admin diag
     disabled
 
 service ipacm /system/bin/ipacm
@@ -759,12 +745,6 @@ service ftm_ffbm /system/bin/ftmdaemon
     user root
     group root
     disabled
-    oneshot
-
-service cnss_diag /system/bin/cnss_diag -q -f
-    class main
-    user system
-    group system wifi inet net_admin sdcard_rw media_rw diag
     oneshot
 
 service cnss-daemon /system/bin/cnss-daemon -n -l
