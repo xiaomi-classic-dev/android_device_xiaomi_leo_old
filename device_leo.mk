@@ -289,10 +289,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm8994
 
-# Multi HAL configuration file
-PRODUCT_COPY_FILES += \
-    device/xiaomi/leo/configs/hals.conf:system/etc/sensors/hals.conf
-
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8994 \
